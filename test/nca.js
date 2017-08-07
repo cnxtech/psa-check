@@ -3,7 +3,7 @@ const psaCheck = require('../')
 const defendants = require('./defendants.json')
 
 defendants.forEach(function (defendant, idx) {
-  const risk = psaCheck.ncaRiskFactor(defendant)
+  const risk = psaCheck.ncaRiskScore(defendant)
   console.log(`
     Defendant #${idx + 1} - NCA questions:
     - Age at current arrest?: ${defendant.age}

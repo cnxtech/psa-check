@@ -20,12 +20,14 @@ function clamp (number, lower = 0, upper = 6) {
 // Prior violent conviction: 0 = 0; 1 or 2 = 1; 3 or more = 2
 
 function isNvcaRisk (defendant) {
+  // merge rapsheet with defendant to flatten it out
+  const riskFactors = Object.assign(defendant, defendant.rapsheet)
   const {
     pendingCharge,
     currentViolentOffense,
     priorConviction,
     priorViolentConviction
-  } = defendant.rapsheet
+  } = riskFactors
 
   let riskFactor = 0
   if (currentViolentOffense) {
@@ -46,18 +48,19 @@ function isNvcaRisk (defendant) {
     riskFactor += 2
   }
 
-  const isViolentRisk = (riskFactor > 3)
-  return isViolentRisk
+  return (riskFactor > 3)
 }
 
 // return 'Failure to Appear' risk factor
-function ftaRiskFactor (defendant) {
+function ftaRiskScore (defendant) {
+  // merge rapsheet with defendant to flatten it out
+  const riskFactors = Object.assign(defendant, defendant.rapsheet)
   const {
     pendingCharge,
     priorConviction,
     priorFTAolder,
     priorFTA2yr
-  } = defendant.rapsheet
+  } = riskFactors
 
   let riskFactor = 0
   if (pendingCharge) {
@@ -78,7 +81,8 @@ function ftaRiskFactor (defendant) {
 }
 
 // return 'New Criminal Activity' risk factor
-function ncaRiskFactor (defendant) {
+function ncaRiskScore (defendant) {
+  const riskFactors = Object.assign(defendant, defendant.rapsheet)
   const {
     pendingCharge,
     priorFTAolder,
@@ -87,7 +91,7 @@ function ncaRiskFactor (defendant) {
     priorMisdemeanor,
     priorFelony,
     priorViolentConviction
-  } = defendant.rapsheet
+  } = riskFactors
 
   let riskFactor = 0
 
@@ -172,11 +176,13 @@ function verdictFromRatings (fta, nca) {
 
 // psaCheck() default export
 module.exports = function (defendant) {
-  return verdictFromRatings(ftaRiskFactor(defendant), ncaRiskFactor(defendant))
+  return verdictFromRatings(ftaRiskScore(defendant), ncaRiskScore(defendant))
 }
 
 // exports for testing
 module.exports.verdictFromRatings = verdictFromRatings
-module.exports.ncaRiskFactor = ncaRiskFactor
-module.exports.ftaRiskFactor = ftaRiskFactor
+module.exports.ncaRiskScore = ncaRiskScore
+module.exports.ftaRiskScore = ftaRiskScore
+module.exports.ncaRiskFactor = ncaRiskScore // for backwards compat (deprecated)
+module.exports.ftaRiskFactor = ftaRiskScore // for backwards compat (deprecated)
 module.exports.isNvcaRisk = isNvcaRisk
