@@ -83,18 +83,12 @@ inquirer.prompt(questions).then(function (answers) {
     }
   }
 
-  console.log(`
-  Defendant:
-  - Age: ${defendant.age}
-  - priorConviction: ${defendant.rapsheet.priorConviction}
-  - priorIncarceration: ${defendant.rapsheet.priorIncarceration}
-  `)
-
   const verdict = psaCheck(defendant)
   console.log(`
-  Verdict:
-  - FTA Risk: ${verdict.fta}
-  - NCA Risk: ${verdict.nca}
-  - Recommendation: ${verdict.code} - ${verdict.text}
+  PSA Risk scores:
+  - Failure to Appear: ${verdict.fta}
+  - New Criminal Activity: ${verdict.nca}
+  
+  Recommendation: ${verdict.code} - ${verdict.text}
     `)
 })
