@@ -12,6 +12,44 @@ function clamp (number, lower = 0, upper = 6) {
   return number
 }
 
+// NVCA Questions:
+// Current violent offense: No = 0; Yes = 2
+// Current violent offense & 20 years old or younger: No = 0; Yes = 1
+// Pending charge at the time of the offense: No = 0; Yes = 1
+// Prior conviction: No = 0; Yes = 1
+// Prior violent conviction: 0 = 0; 1 or 2 = 1; 3 or more = 2
+
+function isNvcaRisk (defendant) {
+  const {
+    pendingCharge,
+    currentViolentOffense,
+    priorConviction,
+    priorViolentConviction
+  } = defendant.rapsheet
+
+  let riskFactor = 0
+  if (currentViolentOffense) {
+    riskFactor += 2
+    if (defendant.age < 21) {
+      riskFactor++
+    }
+  }
+  if (priorConviction) {
+    riskFactor++
+  }
+  if (pendingCharge) {
+    riskFactor++
+  }
+  if (priorViolentConviction === 1 || priorViolentConviction === 2) {
+    riskFactor++
+  } else if (priorViolentConviction > 2) {
+    riskFactor += 2
+  }
+
+  const isViolentRisk = (riskFactor > 3)
+  return isViolentRisk
+}
+
 // return 'Failure to Appear' risk factor
 function ftaRiskFactor (defendant) {
   const {
@@ -141,3 +179,4 @@ module.exports = function (defendant) {
 module.exports.verdictFromRatings = verdictFromRatings
 module.exports.ncaRiskFactor = ncaRiskFactor
 module.exports.ftaRiskFactor = ftaRiskFactor
+module.exports.isNvcaRisk = isNvcaRisk
