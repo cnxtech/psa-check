@@ -98,7 +98,8 @@ function verdictFromRatings (fta, nca) {
 
   const verdicts = {
     ROR: {
-      text: 'release with no conditions', markup: 'release with <em>no conditions</em>'
+      text: 'release with no conditions',
+      markup: 'release with <em>no conditions</em> [ROR]'
     },
     PML1: {
       text: 'release with minimal conditions, defendant is required to report by telephone once per month',
