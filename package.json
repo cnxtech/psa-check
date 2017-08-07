@@ -1,0 +1,24 @@
+{
+  "name": "psa-check",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node bin/cli",
+    "scenarios": "node test/scenarios",
+    "test": "standard && node test"
+  },
+  "keywords": [
+    "psa",
+    "bail"
+  ],
+  "author": "Brad Oyler",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "3.2.1",
+    "standard": "10.0.2"
+  },
+  "bin": {
+    "psa-check": "bin/cli.js"
+  }
+}
