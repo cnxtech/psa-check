@@ -15,10 +15,12 @@
   "author": "Brad Oyler",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "3.2.1",
-    "standard": "10.0.2"
+    "inquirer": "3.2.1"
   },
   "bin": {
     "psa-check": "bin/cli.js"
+  },
+  "devDependencies": {
+    "standard": "10.0.2"
   }
 }
