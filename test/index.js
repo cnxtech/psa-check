@@ -78,7 +78,6 @@ const defendants = [
     }
   },
   {
-    expectedVerdict: 'ROR',
     age: 60,
     case: 5,
     crime: 'TERRORISTIC THREATS',
@@ -93,7 +92,7 @@ const defendants = [
     },
     expected: {
       verdict: 'ROR',
-      FTA: 1,
+      FTA: 0,
       NCA: 1
     }
   },

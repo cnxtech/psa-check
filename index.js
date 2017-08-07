@@ -1,6 +1,6 @@
 
 // helper function to scope to a 6-point scale
-function clamp (number, lower = 1, upper = 6) {
+function clamp (number, lower = 0, upper = 6) {
   if (number === number) { // eslint-disable-line
     if (upper !== undefined) {
       number = number <= upper ? number : upper
@@ -123,7 +123,9 @@ function verdictFromRatings (fta, nca) {
     JD: { text: 'judge\'s discretion', markup: 'judge\'s discretion' }
   }
 
-  const code = verdictMap['FTA' + fta][nca - 1] || 'JD'
+  const FTA = fta || 1 // fta can be zero, but not for verdicts
+  const NCA = nca || 1
+  const code = verdictMap['FTA' + FTA][NCA - 1] || 'JD'
   const text = verdicts[code].text
   const markup = verdicts[code].markup
   return { fta, nca, code, text, markup }
