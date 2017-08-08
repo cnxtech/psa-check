@@ -9,14 +9,14 @@ based on: [PSA Risk Factors & Formula](http://www.arnoldfoundation.org/wp-conten
 ```
 $ npm i -g git+https://github.com/nbcnews/psa-check.git
 ```
-and 
+and
 #### Run CLI (command line interface)
 ```
 $ psa-check
 ```
 
 #### Example output:
-<img width="545" alt="psa check demo" src="https://user-images.githubusercontent.com/425966/29005342-583ab854-7aa7-11e7-838d-fe89ab0ee05a.png">
+![psa-check](https://user-images.githubusercontent.com/425966/29091121-e0039856-7c4f-11e7-9f82-d29a770fe4ac.jpg)
 
 #### Or run via npx
 > requires npm 5.3+

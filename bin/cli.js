@@ -5,53 +5,59 @@ const psaCheck = require('../')
 
 const questions = [
   {
-    type: 'input',
-    name: 'age',
-    message: 'Age at current arrest?',
-    default: 18
-  },
-  {
     type: 'confirm',
     name: 'pendingCharge',
-    message: 'Pending charge at the time of the offense?',
-    default: false
-  },
-  {
-    type: 'confirm',
-    name: 'priorMisdemeanor',
-    message: 'Prior misdemeanor conviction?',
-    default: false
-  },
-  {
-    type: 'confirm',
-    name: 'priorConviction',
-    message: 'Prior conviction (felony or misdemeanor)?',
-    default: false
-  },
-  {
-    type: 'confirm',
-    name: 'priorIncarceration',
-    message: 'Prior sentence to incarceration?',
-    default: false
-  },
-  {
-    type: 'list',
-    name: 'priorViolentConviction',
-    choices: ['0', '1', '2 or more'],
-    message: 'Prior violent conviction?',
-    default: '0'
-  },
-  {
-    type: 'confirm',
-    name: 'priorFTAolder',
-    message: 'Prior failure to appear pretrial older than 2 years?',
+    message: 'Pending charge at the time of the offense? (FTA/NCA)',
     default: false
   },
   {
     type: 'list',
     choices: ['0', '1 or 2', '3 or more'],
     name: 'priorFTA2yr',
-    message: 'Prior failure to appear pretrial in past 2 years?',
+    message: 'Prior failure to appear pretrial in past 2 years? (FTA/NCA)',
+    default: '0'
+  },
+  {
+    type: 'confirm',
+    name: 'priorFTAolder',
+    message: 'Prior failure to appear pretrial older than 2 years? (FTA)',
+    default: false
+  },
+  {
+    type: 'confirm',
+    name: 'priorConviction',
+    message: 'Prior conviction? (FTA)',
+    default: false
+  },
+  {
+    type: 'input',
+    name: 'age',
+    message: 'Age at current arrest? (NCA)',
+    default: 18
+  },
+  {
+    type: 'confirm',
+    name: 'priorMisdemeanor',
+    message: 'Prior misdemeanor conviction? (NCA)',
+    default: false
+  },
+  {
+    type: 'confirm',
+    name: 'priorFelony',
+    message: 'Prior felony conviction? (NCA)',
+    default: false
+  },
+  {
+    type: 'confirm',
+    name: 'priorIncarceration',
+    message: 'Prior sentence to incarceration? (NCA)',
+    default: false
+  },
+  {
+    type: 'list',
+    name: 'priorViolentConviction',
+    choices: ['0', '1', '2 or more'],
+    message: 'Prior violent conviction? (NCA)',
     default: '0'
   }
 ]
@@ -63,6 +69,7 @@ inquirer.prompt(questions).then(function (answers) {
     age,
     priorMisdemeanor,
     priorConviction,
+    priorFelony,
     pendingCharge,
     priorIncarceration,
     priorViolentConviction,
@@ -72,15 +79,14 @@ inquirer.prompt(questions).then(function (answers) {
 
   const defendant = {
     age,
-    rapsheet: {
-      priorMisdemeanor,
-      priorConviction,
-      pendingCharge,
-      priorIncarceration,
-      priorViolentConviction,
-      priorFTAolder,
-      priorFTA2yr
-    }
+    priorMisdemeanor,
+    priorConviction,
+    priorFelony,
+    pendingCharge,
+    priorIncarceration,
+    priorViolentConviction,
+    priorFTAolder,
+    priorFTA2yr
   }
 
   const verdict = psaCheck(defendant)
@@ -88,7 +94,7 @@ inquirer.prompt(questions).then(function (answers) {
   PSA Risk scores:
   - Failure to Appear: ${verdict.fta}
   - New Criminal Activity: ${verdict.nca}
-  
+
   Recommendation: ${verdict.code} - ${verdict.text}
     `)
 })
