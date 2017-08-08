@@ -1,17 +1,4 @@
 
-// helper function to scope to a 6-point scale
-function clamp (number, lower = 0, upper = 6) {
-  if (number === number) { // eslint-disable-line
-    if (upper !== undefined) {
-      number = number <= upper ? number : upper
-    }
-    if (lower !== undefined) {
-      number = number >= lower ? number : lower
-    }
-  }
-  return number
-}
-
 // NVCA Questions:
 // Current violent offense: No = 0; Yes = 2
 // Current violent offense & 20 years old or younger: No = 0; Yes = 1
@@ -48,7 +35,7 @@ function isNvcaRisk (defendant) {
     riskFactor += 2
   }
 
-  return (riskFactor > 3)
+  return (riskFactor > 3) // 7-point scale
 }
 
 // return 'Failure to Appear' risk factor
@@ -77,7 +64,9 @@ function ftaRiskScore (defendant) {
   if (priorFTAolder) {
     riskFactor++
   }
-  return clamp(riskFactor)
+
+  const scale = [1, 2, 3, 4, 4, 5, 5, 6]
+  return scale[riskFactor]
 }
 
 // return 'New Criminal Activity' risk factor
@@ -85,7 +74,6 @@ function ncaRiskScore (defendant) {
   const riskFactors = Object.assign(defendant, defendant.rapsheet)
   const {
     pendingCharge,
-    priorFTAolder,
     priorFTA2yr,
     priorIncarceration,
     priorMisdemeanor,
@@ -95,7 +83,7 @@ function ncaRiskScore (defendant) {
 
   let riskFactor = 0
 
-  if (defendant.age < 23) {
+  if (defendant.age < 23) { // 22 or younger
     riskFactor = riskFactor + 2
   }
   if (pendingCharge) {
@@ -117,13 +105,12 @@ function ncaRiskScore (defendant) {
   } else if (priorFTA2yr >= 2) {
     riskFactor += 2
   }
-  if (priorFTAolder) {
-    riskFactor++
-  }
   if (priorIncarceration) {
     riskFactor += 2
   }
-  return clamp(riskFactor)
+
+  const scale = [1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 6, 6, 6]
+  return scale[riskFactor]
 }
 
 // combine risk factors to get verdict

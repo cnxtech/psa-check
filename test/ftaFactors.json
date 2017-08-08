@@ -1,0 +1,52 @@
+[
+   {
+      "case": 1,
+      "crime": "CARJACKING AND RETAIN DRIVER OR OCCUPANT",
+      "age": 43,
+      "pendingCharge": true,
+      "priorConviction": true,
+      "priorFTA2yr": 1,
+      "priorFTAolder": true,
+      "expectedFtaScore": 5
+   },
+   {
+      "case": 2,
+      "crime": "DRUG POSSESSION",
+      "age": 42,
+      "pendingCharge": false,
+      "priorConviction": true,
+      "priorFTA2yr": 0,
+      "priorFTAolder": true,
+      "expectedFtaScore": 3
+   },
+   {
+      "case": 3,
+      "crime": "DRUG POSSESSION",
+      "age": 27,
+      "pendingCharge": true,
+      "priorConviction": true,
+      "priorFTA2yr": 1,
+      "priorFTAolder": false,
+      "expectedFtaScore": 4
+   },
+   {
+      "case": 4,
+      "crime": "DRUG POSSESSION",
+      "age": 43,
+      "pendingCharge": true,
+      "priorConviction": true,
+      "priorFTA2yr": 0,
+      "priorFTAolder": true,
+      "expectedFtaScore": 4
+   },
+   {
+      "case": 5,
+      "crime": "TERRORISTIC THREATS",
+      "age": 60,
+      "pendingCharge": false,
+      "priorConviction": false,
+      "priorFTA2yr": 0,
+      "priorFTAolder": false,
+      "expectedFtaScore": 1
+   }
+]

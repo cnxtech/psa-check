@@ -1,115 +1,95 @@
 [
-   {
-      "age": 43,
-      "case": 1,
-      "crime": "CARJACKING AND RETAIN DRIVER OR OCCUPANT",
-      "name": "REDACTED",
-      "rapsheet": {
-         "pendingCharge": true,
-         "priorConviction": 8,
-         "priorFTAolder": true,
-         "priorFTA2yr": 1,
-         "priorIncarceration": true,
-         "priorMisdemeanor": true,
-         "priorViolentConviction": true
-      },
-      "expected": {
-         "verdict": "NRR",
-         "FTA": 5,
-         "NCA": 6
-      }
-   },
-   {
-      "age": 42,
-      "case": 2,
-      "crime": "DRUG POSSESSION",
-      "name": "REDACTED",
-      "rapsheet": {
-         "pendingCharge": false,
-         "priorConviction": 5,
-         "priorFTA2yr": 0,
-         "priorFTAolder": true,
-         "priorIncarceration": true
-      },
-      "expected": {
-         "verdict": "PML1",
-         "FTA": 2,
-         "NCA": 3
-      }
-   },
-   {
-      "age": 27,
-      "case": 3,
-      "crime": "DRUG POSSESSION",
-      "name": "REDACTED",
-      "rapsheet": {
-         "pendingCharge": true,
-         "priorConviction": 2,
-         "priorFTA2yr": 1,
-         "priorFTAolder": false,
-         "priorIncarceration": false
-      },
-      "expected": {
-         "verdict": "PML2",
-         "FTA": 4,
-         "NCA": 4
-      }
-   },
-   {
-      "age": 43,
-      "case": 4,
-      "crime": "DRUG POSSESSION",
-      "name": "REDACTED",
-      "rapsheet": {
-         "priorMisdemeanor": true,
-         "pendingCharge": true,
-         "priorConviction": 6,
-         "priorFTA2yr": 0,
-         "priorFTAolder": true,
-         "priorIncarceration": true
-      },
-      "expected": {
-         "verdict": "NRR",
-         "FTA": 3,
-         "NCA": 6
-      }
-   },
-   {
-      "age": 60,
-      "case": 5,
-      "crime": "TERRORISTIC THREATS",
-      "name": "REDACTED",
-      "rapsheet": {
-         "priorMisdemeanor": true,
-         "pendingCharge": false,
-         "priorConviction": false,
-         "priorFTA2yr": 0,
-         "priorFTAolder": false,
-         "priorIncarceration": false
-      },
-      "expected": {
-         "verdict": "ROR",
-         "FTA": 0,
-         "NCA": 1
-      }
-   },
-   {
-      "age": 21,
-      "case": 6,
-      "crime": "non-verified case",
-      "rapsheet": {
-         "priorConviction": true,
-         "pendingCharge": false,
-         "priorMisdemeanor": true,
-         "priorIncarceration": true,
-         "priorViolentConviction": 0,
-         "priorFTAolder": false,
-         "priorFTA2yr": 0
-      },
-      "expected": {
-         "verdict": "JD",
-         "FTA": 1,
-         "NCA": 5
-      }
-   }
+  {
+    "age": 43,
+    "case": 1,
+    "crime": "CARJACKING AND RETAIN DRIVER OR OCCUPANT",
+    "name": "REDACTED",
+    "pendingCharge": true,
+    "priorConviction": true,
+    "priorFTAolder": true,
+    "priorFTA2yr": 1,
+    "priorIncarceration": true,
+    "priorMisdemeanor": true,
+    "priorFelony": true,
+    "priorViolentConviction": 1,
+    "expected": {
+      "verdict": "NRR",
+      "FTA": 5,
+      "NCA": 6
+    }
+  },
+  {
+    "age": 42,
+    "case": 2,
+    "crime": "DRUG POSSESSION",
+    "name": "REDACTED",
+    "pendingCharge": false,
+    "priorConviction": true,
+    "priorMisdemeanor": true,
+    "priorFelony": true,
+    "priorFTA2yr": 0,
+    "priorFTAolder": true,
+    "priorIncarceration": true,
+    "priorViolentConviction": 0,
+    "expected": {
+      "verdict": "PML1",
+      "FTA": 3,
+      "NCA": 3
+    }
+  },
+  {
+    "age": 27,
+    "case": 3,
+    "crime": "DRUG POSSESSION",
+    "name": "REDACTED",
+    "pendingCharge": true,
+    "priorConviction": true,
+    "priorMisdemeanor": true,
+    "priorFelony": true,
+    "priorFTA2yr": 1,
+    "priorFTAolder": false,
+    "priorIncarceration": false,
+    "expected": {
+      "verdict": "PML2",
+      "FTA": 4,
+      "NCA": 4
+    }
+  },
+  {
+    "age": 43,
+    "case": 4,
+    "crime": "DRUG POSSESSION",
+    "name": "REDACTED",
+    "pendingCharge": true,
+    "priorConviction": true,
+    "priorMisdemeanor": true,
+    "priorFelony": true,
+    "priorFTA2yr": 0,
+    "priorFTAolder": true,
+    "priorViolentConviction": 1,
+    "priorIncarceration": true,
+    "expected": {
+      "verdict": "PML3",
+      "FTA": 4,
+      "NCA": 5
+    }
+  },
+  {
+    "age": 60,
+    "case": 5,
+    "crime": "TERRORISTIC THREATS",
+    "name": "REDACTED",
+    "pendingCharge": false,
+    "priorConviction": false,
+    "priorMisdemeanor": false,
+    "priorFelony": false,
+    "priorFTA2yr": 0,
+    "priorFTAolder": false,
+    "priorIncarceration": false,
+    "expected": {
+      "verdict": "ROR",
+      "FTA": 1,
+      "NCA": 1
+    }
+  }
 ]

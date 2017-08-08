@@ -1,0 +1,62 @@
+[
+   {
+      "case": 1,
+      "crime": "CARJACKING AND RETAIN DRIVER OR OCCUPANT",
+      "age": 43,
+      "pendingCharge": true,
+      "priorMisdemeanor": true,
+      "priorFelony": true,
+      "priorViolentConviction": 1,
+      "priorFTA2yr": 1,
+      "priorIncarceration": true,
+      "expectedNcaScore": 6
+   },
+   {
+      "case": 2,
+      "crime": "DRUG POSSESSION",
+      "age": 42,
+      "pendingCharge": false,
+      "priorMisdemeanor": true,
+      "priorFelony": true,
+      "priorViolentConviction": 0,
+      "priorFTA2yr": 0,
+      "priorIncarceration": true,
+      "expectedNcaScore": 3
+   },
+   {
+      "case": 3,
+      "crime": "DRUG POSSESSION",
+      "age": 27,
+      "pendingCharge": true,
+      "priorMisdemeanor": true,
+      "priorFelony": true,
+      "priorViolentConviction": 0,
+      "priorFTA2yr": 1,
+      "priorIncarceration": false,
+      "expectedNcaScore": 4
+   },
+   {
+      "case": 4,
+      "crime": "DRUG POSSESSION",
+      "age": 43,
+      "pendingCharge": true,
+      "priorMisdemeanor": true,
+      "priorFelony": true,
+      "priorViolentConviction": 1,
+      "priorFTA2yr": 0,
+      "priorIncarceration": true,
+      "expectedNcaScore": 5
+   },
+   {
+      "case": 5,
+      "crime": "TERRORISTIC THREATS",
+      "age": 60,
+      "pendingCharge": false,
+      "priorMisdemeanor": false,
+      "priorFelony": false,
+      "priorViolentConviction": 0,
+      "priorFTA2yr": 0,
+      "priorIncarceration": false,
+      "expectedNcaScore": 1
+   }
+]

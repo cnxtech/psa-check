@@ -1,17 +1,17 @@
 const assert = require('assert')
 const psaCheck = require('../')
-const defendants = require('./defendants.json')
+const defendants = require('./ftaFactors.json')
 
 defendants.forEach(function (defendant, idx) {
   const risk = psaCheck.ftaRiskScore(defendant)
   console.log(`
-    Defendant #${idx + 1} - FTA questions:
-    - Pending charge: ${defendant.rapsheet.pendingCharge}
-    - Prior conviction: ${defendant.rapsheet.priorConviction}
-    - Prior failure to appear pretrial in past 2 years: ${defendant.rapsheet.priorFTA2yr}
-    - Prior failure to appear pretrial older than 2 years: ${defendant.rapsheet.priorFTAolder}
-    
+    Case #${defendant.case} - FTA factors:
+    1. Pending charge: ${defendant.pendingCharge}
+    2. Prior conviction: ${defendant.priorConviction}
+    3. Prior failure to appear pretrial in past 2 years: ${defendant.priorFTA2yr}
+    4. Prior failure to appear pretrial older than 2 years: ${defendant.priorFTAolder}
+
     FTA Risk Score: ${risk}
     `)
-  assert.equal(risk, defendant.expected.FTA)
+  assert.equal(risk, defendant.expectedFtaScore)
 })
