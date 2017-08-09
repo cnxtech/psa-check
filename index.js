@@ -6,12 +6,11 @@
 // Prior conviction: No = 0; Yes = 1
 // Prior violent conviction: 0 = 0; 1 or 2 = 1; 3 or more = 2
 
-function isNvcaRisk (defendant, typeFlag) {
-  // merge rapsheet with defendant to flatten it out
-  const riskFactors = Object.assign(defendant, defendant.rapsheet)
+function isNvcaRisk (riskFactors, typeFlag) {
   const {
-    pendingCharge,
+    age,
     currentViolentOffense,
+    pendingCharge,
     priorConviction,
     priorViolentConviction
   } = riskFactors
@@ -19,7 +18,7 @@ function isNvcaRisk (defendant, typeFlag) {
   let riskFactor = 0
   if (currentViolentOffense) {
     riskFactor += 2
-    if (defendant.age < 21) {
+    if (age < 21) {
       riskFactor++
     }
   }
@@ -42,9 +41,7 @@ function isNvcaRisk (defendant, typeFlag) {
 }
 
 // return 'Failure to Appear' risk factor
-function ftaRiskScore (defendant, typeFlag) {
-  // merge rapsheet with defendant to flatten it out
-  const riskFactors = Object.assign(defendant, defendant.rapsheet)
+function ftaRiskScore (riskFactors, typeFlag) {
   const {
     pendingCharge,
     priorConviction,
@@ -76,9 +73,9 @@ function ftaRiskScore (defendant, typeFlag) {
 }
 
 // return 'New Criminal Activity' risk factor
-function ncaRiskScore (defendant, typeFlag) {
-  const riskFactors = Object.assign(defendant, defendant.rapsheet)
+function ncaRiskScore (riskFactors, typeFlag) {
   const {
+    age,
     pendingCharge,
     priorFTA2yr,
     priorIncarceration,
@@ -89,7 +86,7 @@ function ncaRiskScore (defendant, typeFlag) {
 
   let riskFactor = 0
 
-  if (defendant.age < 23) { // 22 or younger
+  if (age < 23) { // 22 or younger
     riskFactor = riskFactor + 2
   }
   if (pendingCharge) {
@@ -123,7 +120,7 @@ function ncaRiskScore (defendant, typeFlag) {
 }
 
 // combine risk factors to get verdict
-function verdictFromRatings (fta, nca) {
+function verdictFromScores (fta, nca) {
   // recommendation table FTA/NCA
   const verdictMap = {
     FTA1: ['ROR', 'ROR', null, null, null, null],
@@ -162,9 +159,7 @@ function verdictFromRatings (fta, nca) {
     JD: { text: 'judge\'s discretion', markup: 'judge\'s discretion' }
   }
 
-  const FTA = fta || 1 // fta can be zero, but not for verdicts
-  const NCA = nca || 1
-  const code = verdictMap['FTA' + FTA][NCA - 1] || 'JD'
+  const code = verdictMap['FTA' + fta][nca - 1] || 'JD'
   const text = verdicts[code].text
   const markup = verdicts[code].markup
   return { fta, nca, code, text, markup }
@@ -172,11 +167,10 @@ function verdictFromRatings (fta, nca) {
 
 // psaCheck() default export
 module.exports = function (defendant) {
-  return verdictFromRatings(ftaRiskScore(defendant, 'scaled'), ncaRiskScore(defendant, 'scaled'))
+  return verdictFromScores(ftaRiskScore(defendant, 'scaled'), ncaRiskScore(defendant, 'scaled'))
 }
 
-// exports for testing
-module.exports.verdictFromRatings = verdictFromRatings
+module.exports.verdictFromScores = verdictFromScores
 module.exports.ncaRiskScore = ncaRiskScore
 module.exports.ftaRiskScore = ftaRiskScore
 module.exports.isNvcaRisk = isNvcaRisk

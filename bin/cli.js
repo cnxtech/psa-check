@@ -11,6 +11,12 @@ const questions = [
     default: false
   },
   {
+    type: 'confirm',
+    name: 'currentViolentOffense',
+    message: 'Current violent offense?',
+    default: false
+  },
+  {
     type: 'list',
     choices: ['0', '1 or 2', '3 or more'],
     name: 'priorFTA2yr',
