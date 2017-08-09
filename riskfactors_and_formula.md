@@ -35,3 +35,19 @@
 |Pending charge at the time of the offense | No = 0; Yes = 1
 |Prior conviction | No = 0; Yes = 1
 |Prior violent conviction | 0 = 0; 1 or 2 = 1; 3 or more = 2
+
+#### 6-point scale for Risk scores 
+
+|FTA Score | FTA Scale | NCA Score | NCA Scale | NVCA Score | NVCA Flag
+|-----------------------------------------------------------------------
+|        0 |         1 |         0 |         1 |   0     | No 
+|        1 |         2 |         1 |         2 |   1     | No
+|        2 |         3 |         2 |         2 |   2     | No
+|        3 |         4 |         3 |         3 |   3     | No
+|        4 |         4 |         4 |         3 |   4     | Yes
+|        5 |         5 |         5 |         4 |   5     | Yes
+|        6 |         5 |         6 |         4 |   6     | Yes
+|        7 |         6 |         7 |         5 |   7     | Yes
+|          |           |         8 |         5 |         |   |
+|          |           |      9-13 |         6 |         | &nbsp; |
+
