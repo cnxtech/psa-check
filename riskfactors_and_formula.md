@@ -1,6 +1,8 @@
 ## PSA Risk factors and formula
 
-#### Overall Risk Factors (with example data)
+See: [PSA: RISK FACTORS AND FORMULA ](http://www.arnoldfoundation.org/wp-content/uploads/PSA-Risk-Factors-and-Formula.pdf)
+
+### Overall Risk Factors (with example data)
 1. Age at Current Arrest: (27)  
 2. Current Violent Offense: (No)  
 2a. Current Violent Offense and 20 Years Old or Younger: (No)
@@ -13,6 +15,13 @@
 8. Prior Failure to Appear Pretrial Older Than 2 Years: (No)
 9. Prior Sentence to Incarceration (14 Days or More): (No)
 
+### FACTOR WEIGHTING
+Each of these factors is weighted—or, assigned points—according to the strength
+of the relationship between the factor and the specific pretrial outcome. The PSA
+calculates a raw score for each of the outcomes. Scores for NCA and FTA are
+converted to separate scales of one to six, with higher scores indicating a greater
+level of risk. The raw score for NVCA is used to determine whether the defendant
+should be flagged as posing an elevated risk of violence. 
 
 | Risk Factor | Weights 
 |-------------|---------
@@ -36,10 +45,10 @@
 |Prior conviction | No = 0; Yes = 1
 |Prior violent conviction | 0 = 0; 1 or 2 = 1; 3 or more = 2
 
-#### 6-point scale for Risk scores 
+### 6-point scale for Risk scores 
 
 |FTA Score | FTA Scale | NCA Score | NCA Scale | NVCA Score | NVCA Flag
-|-----------------------------------------------------------------------
+|----------|-----------|-----------|-----------|------------|-----------
 |        0 |         1 |         0 |         1 |   0     | No 
 |        1 |         2 |         1 |         2 |   1     | No
 |        2 |         3 |         2 |         2 |   2     | No
@@ -50,4 +59,3 @@
 |        7 |         6 |         7 |         5 |   7     | Yes
 |          |           |         8 |         5 |         |   |
 |          |           |      9-13 |         6 |         | &nbsp; |
-
