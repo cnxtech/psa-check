@@ -3,8 +3,8 @@ const psaCheck = require('../')
 const defendants = require('./defendants.json')
 
 defendants.forEach(function (defendant, idx) {
-  const FTA = psaCheck.ftaRiskScore(defendant)
-  const NCA = psaCheck.ncaRiskScore(defendant)
+  const FTA = psaCheck.ftaRiskScore(defendant, 'scaled')
+  const NCA = psaCheck.ncaRiskScore(defendant, 'scaled')
   const verdict = psaCheck(defendant)
   console.log(`
     Case #${defendant.case}

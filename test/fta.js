@@ -3,7 +3,7 @@ const psaCheck = require('../')
 const defendants = require('./ftaFactors.json')
 
 defendants.forEach(function (defendant, idx) {
-  const risk = psaCheck.ftaRiskScore(defendant)
+  const risk = psaCheck.ftaRiskScore(defendant, 'scaled')
   console.log(`
     Case #${defendant.case} - FTA factors:
     1. Pending charge: ${defendant.pendingCharge}

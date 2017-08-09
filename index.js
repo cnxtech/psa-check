@@ -6,7 +6,7 @@
 // Prior conviction: No = 0; Yes = 1
 // Prior violent conviction: 0 = 0; 1 or 2 = 1; 3 or more = 2
 
-function isNvcaRisk (defendant) {
+function isNvcaRisk (defendant, typeFlag) {
   // merge rapsheet with defendant to flatten it out
   const riskFactors = Object.assign(defendant, defendant.rapsheet)
   const {
@@ -35,11 +35,14 @@ function isNvcaRisk (defendant) {
     riskFactor += 2
   }
 
-  return (riskFactor > 3) // 7-point scale
+  if (typeFlag === 'scaled') {
+    return (riskFactor > 3) // 7-point scale
+  }
+  return riskFactor
 }
 
 // return 'Failure to Appear' risk factor
-function ftaRiskScore (defendant) {
+function ftaRiskScore (defendant, typeFlag) {
   // merge rapsheet with defendant to flatten it out
   const riskFactors = Object.assign(defendant, defendant.rapsheet)
   const {
@@ -65,12 +68,15 @@ function ftaRiskScore (defendant) {
     riskFactor++
   }
 
-  const scale = [1, 2, 3, 4, 4, 5, 5, 6]
-  return scale[riskFactor]
+  if (typeFlag === 'scaled') {
+    const scale = [1, 2, 3, 4, 4, 5, 5, 6]
+    return scale[riskFactor]
+  }
+  return riskFactor
 }
 
 // return 'New Criminal Activity' risk factor
-function ncaRiskScore (defendant) {
+function ncaRiskScore (defendant, typeFlag) {
   const riskFactors = Object.assign(defendant, defendant.rapsheet)
   const {
     pendingCharge,
@@ -109,8 +115,11 @@ function ncaRiskScore (defendant) {
     riskFactor += 2
   }
 
-  const scale = [1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 6, 6, 6]
-  return scale[riskFactor]
+  if (typeFlag === 'scaled') {
+    const scale = [1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 6, 6, 6]
+    return scale[riskFactor]
+  }
+  return riskFactor
 }
 
 // combine risk factors to get verdict
@@ -163,13 +172,11 @@ function verdictFromRatings (fta, nca) {
 
 // psaCheck() default export
 module.exports = function (defendant) {
-  return verdictFromRatings(ftaRiskScore(defendant), ncaRiskScore(defendant))
+  return verdictFromRatings(ftaRiskScore(defendant, 'scaled'), ncaRiskScore(defendant, 'scaled'))
 }
 
 // exports for testing
 module.exports.verdictFromRatings = verdictFromRatings
 module.exports.ncaRiskScore = ncaRiskScore
 module.exports.ftaRiskScore = ftaRiskScore
-module.exports.ncaRiskFactor = ncaRiskScore // for backwards compat (deprecated)
-module.exports.ftaRiskFactor = ftaRiskScore // for backwards compat (deprecated)
 module.exports.isNvcaRisk = isNvcaRisk
