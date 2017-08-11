@@ -35,7 +35,7 @@ function isNvcaRisk (riskFactors, typeFlag) {
   }
 
   if (typeFlag === 'scaled') {
-    return (riskFactor > 3) // 7-point scale
+    return (riskFactor > 3) ? 'Yes' : 'No' // 7-point scale
   }
   return riskFactor
 }
@@ -167,7 +167,9 @@ function verdictFromScores (fta, nca) {
 
 // psaCheck() default export
 module.exports = function (defendant) {
-  return verdictFromScores(ftaRiskScore(defendant, 'scaled'), ncaRiskScore(defendant, 'scaled'))
+  const verdict = verdictFromScores(ftaRiskScore(defendant, 'scaled'), ncaRiskScore(defendant, 'scaled'))
+  verdict.nvca = isNvcaRisk(defendant, 'scaled')
+  return verdict
 }
 
 module.exports.verdictFromScores = verdictFromScores
