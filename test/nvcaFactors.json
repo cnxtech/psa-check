@@ -7,7 +7,7 @@
       "currentViolentOffense": true,
       "priorConviction": true,
       "priorViolentConviction": 1,
-      "expectedNvcaFlag": true
+      "expectedNvcaFlag": "Yes"
    },
    {
       "case": 2,
@@ -17,7 +17,7 @@
       "currentViolentOffense": false,
       "priorConviction": false,
       "priorViolentConviction": 0,
-      "expectedNvcaFlag": false
+      "expectedNvcaFlag": "No"
    },
    {
       "case": 3,
@@ -27,7 +27,7 @@
       "currentViolentOffense": false,
       "priorConviction": false,
       "priorViolentConviction": 0,
-      "expectedNvcaFlag": false
+      "expectedNvcaFlag": "No"
    },
    {
       "case": 4,
@@ -37,7 +37,7 @@
       "currentViolentOffense": false,
       "priorConviction": false,
       "priorViolentConviction": 1,
-      "expectedNvcaFlag": false
+      "expectedNvcaFlag": "No"
    },
    {
       "case": 5,
@@ -47,6 +47,6 @@
       "currentViolentOffense": true,
       "priorConviction": false,
       "priorViolentConviction": 0,
-      "expectedNvcaFlag": false
+      "expectedNvcaFlag": "No"
    }
 ]

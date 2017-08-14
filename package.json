@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node bin/cli",
     "scenarios": "node test/scenarios",
-    "test": "node test/fta && node test/nca && node test && standard"
+    "test": "node test/nvca && node test/fta && node test/nca && node test && standard"
   },
   "keywords": [
     "psa",

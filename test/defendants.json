@@ -6,6 +6,7 @@
     "name": "REDACTED",
     "pendingCharge": true,
     "priorConviction": true,
+    "currentViolentOffense": true,
     "priorFTAolder": true,
     "priorFTA2yr": 1,
     "priorIncarceration": true,
@@ -15,7 +16,8 @@
     "expected": {
       "verdict": "NRR",
       "FTA": 5,
-      "NCA": 6
+      "NCA": 6,
+      "NVCA": "Yes"
     }
   },
   {
@@ -25,6 +27,7 @@
     "name": "REDACTED",
     "pendingCharge": false,
     "priorConviction": true,
+    "currentViolentOffense": false,
     "priorMisdemeanor": true,
     "priorFelony": true,
     "priorFTA2yr": 0,
@@ -34,7 +37,8 @@
     "expected": {
       "verdict": "PML1",
       "FTA": 3,
-      "NCA": 3
+      "NCA": 3,
+      "NVCA": "No"
     }
   },
   {
@@ -44,6 +48,7 @@
     "name": "REDACTED",
     "pendingCharge": true,
     "priorConviction": true,
+    "currentViolentOffense": false,
     "priorMisdemeanor": true,
     "priorFelony": true,
     "priorFTA2yr": 1,
@@ -52,7 +57,8 @@
     "expected": {
       "verdict": "PML2",
       "FTA": 4,
-      "NCA": 4
+      "NCA": 4,
+      "NVCA": "No"
     }
   },
   {
@@ -62,6 +68,7 @@
     "name": "REDACTED",
     "pendingCharge": true,
     "priorConviction": true,
+    "currentViolentOffense": false,
     "priorMisdemeanor": true,
     "priorFelony": true,
     "priorFTA2yr": 0,
@@ -71,7 +78,8 @@
     "expected": {
       "verdict": "PML3",
       "FTA": 4,
-      "NCA": 5
+      "NCA": 5,
+      "NVCA": "No"
     }
   },
   {
@@ -81,6 +89,7 @@
     "name": "REDACTED",
     "pendingCharge": false,
     "priorConviction": false,
+    "currentViolentOffense": true,
     "priorMisdemeanor": false,
     "priorFelony": false,
     "priorFTA2yr": 0,
@@ -89,7 +98,8 @@
     "expected": {
       "verdict": "ROR",
       "FTA": 1,
-      "NCA": 1
+      "NCA": 1,
+      "NVCA": "No"
     }
   }
 ]
