@@ -1,4 +1,5 @@
 # PSA Check
+
 Public Safety Assessment tool
 based on: [PSA Risk Factors & Formula](http://www.arnoldfoundation.org/wp-content/uploads/PSA-Risk-Factors-and-Formula.pdf)
 
@@ -24,3 +25,8 @@ $ psa-check
 ```
 $ npx git+https://github.com/nbcnews/psa-check.git
 ```
+## NONPROFIT IMPLEMENTATION AND OWNERSHIP
+Laura and John Arnold Foundation (LJAF) provides the PSA at no cost to jurisdictions that adopt it and funds technical
+support to help localities integrate the tool into their operations. The PSA cannot
+be implemented by a jurisdiction, incorporated into software, or otherwise used or
+reproduced without LJAF’s express, prior written consent.
